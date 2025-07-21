@@ -1,0 +1,46 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore the default SQLite database.
+*.sqlite3
+*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+log/*
+tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, coverage, byebug history
+*.pid
+*.pid.lock
+.byebug_history
+coverage/
+
+# Ignore master key and credentials
+/config/master.key
+/config/credentials.yml.enc
+
+# Ignore node/yarn/npm
+node_modules/
+yarn-error.log
+yarn-debug.log*
+npm-debug.log*
+
+# Ignore cache
+tmp/cache/*
+!/tmp/cache/.keep
+
+# Ignore bootsnap's compile cache
+tmp/cache/bootsnap/
+
+# Ignore storage
+storage/*
+!/storage/.keep
+
+# Ignore OS files
+.DS_Store
+
+# Ignore IDE config
+.vscode/
+.idea/
