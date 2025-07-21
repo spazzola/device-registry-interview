@@ -238,6 +238,7 @@ PLATFORMS
   arm-linux
   arm64-darwin
   x86-linux
+  x86_64-darwin-21
   x86_64-darwin-23
   x86_64-linux
 
@@ -255,7 +256,7 @@ DEPENDENCIES
   tzinfo-data
 
 RUBY VERSION
-   ruby 3.2.3p157
+   ruby 3.3.3p89
 
 BUNDLED WITH
    2.5.12
