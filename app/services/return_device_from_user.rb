@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ReturnDeviceFromUser
   def initialize(user:, serial_number:)
     @user = user
@@ -8,6 +6,10 @@ class ReturnDeviceFromUser
 
   def call
     device = Device.find_by(serial_number: @serial_number)
+
+    device.user = nil
+    device.save!
+
     device
   end
   
