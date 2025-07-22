@@ -13,6 +13,7 @@ class AssignDeviceToUser
 
     validate_device(device);
     create_device_object(device);
+    create_return_history(device)
 
     device
   end
@@ -36,6 +37,11 @@ class AssignDeviceToUser
     device.user_id = @requesting_user.id
     device.returned_by_id = nil
     device.save!
+  end
+
+  def create_return_history(device)
+    return_history = ReturnsHistory.new(user: @requesting_user, device: device)
+    return_history.save!
   end
 
   def assigning_to_self?
