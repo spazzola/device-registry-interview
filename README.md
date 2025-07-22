@@ -28,8 +28,8 @@ This project was implemented as part of a recruitment task.
 
 ### Requirements
 
-- Ruby 3.x
-- Rails 7.x
+- Ruby 3.3.3
+- Rails 7.1.3.4
 - SQLite (or PostgreSQL if configured)
 
 ### Installation
