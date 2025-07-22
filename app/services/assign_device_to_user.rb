@@ -13,6 +13,7 @@ class AssignDeviceToUser
 
     validate_device(device);
     create_device_object(device);
+    create_return_history(device)
 
     device
   end
@@ -26,9 +27,7 @@ class AssignDeviceToUser
         raise AssigningError::AlreadyUsedOnOtherUser
       end
 
-      if device.returned_by_id == @requesting_user.id
-        raise AssigningError::AlreadyUsedByUser
-      end
+      check_if_was_returned_by_user(device)
     end
   end
 
@@ -36,6 +35,21 @@ class AssignDeviceToUser
     device.user_id = @requesting_user.id
     device.returned_by_id = nil
     device.save!
+  end
+
+  def create_return_history(device)
+    return_history = ReturnsHistory.new(user: @requesting_user, device: device)
+    return_history.save!
+  end
+
+  def check_if_was_returned_by_user(device)
+    if device.returned_by_id == @requesting_user.id
+      raise AssigningError::AlreadyUsedByUser
+    end
+    
+    if ReturnsHistory.exists?(user_id: @requesting_user.id, device_id: device.id)
+      raise AssigningError::AlreadyUsedByUser
+    end
   end
 
   def assigning_to_self?
