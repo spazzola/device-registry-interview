@@ -24,6 +24,7 @@ RSpec.describe ReturnDeviceFromUser do
     end
 
     it 'returns device and unassign user' do
+      @device.reload
       expect(@device.serial_number).to eq(serial_number)
       expect(@device.user).to eq(nil)
     end
