@@ -7,4 +7,11 @@ RSpec.describe ReturnDeviceFromUser do
   let(:serial_number) { '123456' }
   let(:device) { create(:device, serial_number: serial_number, user: user) }
 
+  before do
+    @device = AssignDeviceToUser.new(
+      requesting_user: user,
+      serial_number: serial_number,
+      new_device_owner_id: user.id
+    ).call
+  end
 end
