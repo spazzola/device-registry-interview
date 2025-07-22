@@ -27,7 +27,7 @@ class AssignDeviceToUser
       end
 
       if device.returned_by_id == @requesting_user.id
-        #TODO throw an error
+        raise AssigningError::AlreadyUsedByUser
       end
     end
   end
