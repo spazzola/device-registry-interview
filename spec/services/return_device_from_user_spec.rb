@@ -3,5 +3,8 @@
 require 'rspec'
 
 RSpec.describe ReturnDeviceFromUser do
-  # TODO: Implement the tests for ReturnDeviceFromUser
+  let(:user) { create(:user)}
+  let(:serial_number) { '123456' }
+  let(:device) { create(:device, serial_number: serial_number, user: user) }
+
 end
