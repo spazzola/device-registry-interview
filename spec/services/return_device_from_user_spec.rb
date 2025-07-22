@@ -30,4 +30,15 @@ RSpec.describe ReturnDeviceFromUser do
     end
   end
 
+  context 'when user returns a device that is assigned to another user ' do
+    let(:other_user) { create(:user)}
+
+      it 'raises an error' do
+        expect { ReturnDeviceFromUser.new(
+            user: other_user,
+            serial_number: serial_number
+          ).call 
+        }.to raise_error(ReturnError::Unauthorized)
+     end
+  end
 end
