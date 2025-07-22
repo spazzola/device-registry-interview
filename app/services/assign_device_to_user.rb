@@ -23,7 +23,7 @@ class AssignDeviceToUser
   def validate_device(device)
     if device.persisted?
       if device.user_id && device.user_id != @requesting_user.id
-        throw AssigningError::AlreadyUsedOnOtherUser
+        raise AssigningError::AlreadyUsedOnOtherUser
       end
 
       if device.returned_by_id == @requesting_user.id
