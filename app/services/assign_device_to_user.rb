@@ -43,6 +43,10 @@ class AssignDeviceToUser
   end
 
   def check_if_was_returned_by_user(device)
+    if device.returned_by_id == @requesting_user.id
+      raise AssigningError::AlreadyUsedByUser
+    end
+    
     if ReturnsHistory.exists?(user_id: @requesting_user.id, device_id: device.id)
       raise AssigningError::AlreadyUsedByUser
     end
