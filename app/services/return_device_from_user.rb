@@ -7,6 +7,8 @@ class ReturnDeviceFromUser
   end
 
   def call
-    # TODO
+    device = Device.find_by(serial_number: @serial_number)
+    device
   end
+  
 end
