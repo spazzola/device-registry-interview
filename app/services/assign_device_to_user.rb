@@ -7,7 +7,8 @@ class AssignDeviceToUser
     @new_device_owner_id = new_device_owner_id
   end
 
-  def call
+  def call 
+    raise RegistrationError::Unauthorized unless assigning_to_self?
     device = Device.find_or_initialize_by(serial_number: @serial_number)
 
     validate_device(device);
@@ -35,5 +36,9 @@ class AssignDeviceToUser
     device.user_id = @requesting_user.id
     device.returned_by_id = nil
     device.save!
+  end
+
+  def assigning_to_self?
+    @requesting_user.id == @new_device_owner_id
   end
 end
