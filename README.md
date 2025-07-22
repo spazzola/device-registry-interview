@@ -43,17 +43,12 @@ bin/rails db:setup
 
 ###  Project Structure
 
-app/models/user.rb – basic user model
-
-app/models/device.rb – device model with assignment logic
-
-app/models/returns_history.rb - return history of devices
-
-app/services/assign_device_to_user.rb – device assignment logic
-
-app/services/return_device_from_user.rb – device return logic
-
-spec/services/ – tests for both services
+- app/models/user.rb – basic user model
+- app/models/device.rb – device model with assignment logic
+- app/models/returns_history.rb - return history of devices
+- app/services/assign_device_to_user.rb – device assignment logic
+- app/services/return_device_from_user.rb – device return logic
+- spec/services/ – tests for both services
 
 ###  License
 This project is intended for demonstration purposes only.
