@@ -1,24 +1,54 @@
-# README
+# 📱 Device Assignment App
 
-Your task is to implement the part of the application that helps track devices assigned to users within an organization.
+A small Ruby on Rails application for managing device assignments within an organization.  
+This project was implemented as part of a recruitment task.
 
-For now, we have two ActiveRecord models: User and Device.
-User can have many devices; the device should be active only for one assigned user.
-There are 2 actions a User can take with the Device: assign the device to User or return the Device.
+## ✅ Features
 
-Here are the product requirements:
-- User can assign the device only to themself. 
-- User can't assign the device already assigned to another user.
-- Only the user who assigned the device can return it. 
-- If the user returned the device in the past, they can't ever re-assign the same device to themself.
+- Users can assign a device to themselves.
+- A device can only be assigned to one active user at a time.
+- A user cannot assign a device that is already assigned to someone else.
+- Only the user who assigned a device can return it.
+- Once a user returns a device, they can never re-assign the same device again.
 
+---
 
-TODO:
- - Clone this repo to your local machine - DON'T FORK IT.
- - Fix the config, so you can run the test suite properly.
- - Implement the code to make the tests pass for `AssignDeviceToUser` service.
- - Following the product requirements listed above, implement tests for returning the device and then implement the code to make them pass.
- - In case you are missing additional product requirements, use your best judgment. Have fun with it.
- - Refactor at will. Do you see something you don't like? Change it. It's your code. Remember to satisfy the outlined product requirements though.
- - Remember to document your progress using granular commits and meaningful commit messages.
- - Publish your code as a public repo using your Github account.
+## 🧠 Business Logic
+
+- Devices are uniquely identified by their `serial_number`.
+- Assignment and return operations are handled using service objects:
+  - `AssignDeviceToUser`
+  - `ReturnDeviceFromUser`
+- Returned devices are tracked internally; no flag is used, only ownership and timestamps.
+- Invalid operations raise custom error classes (`AssigningError`, `RegistrationError`).
+
+---
+
+## ⚙️ Setup
+
+### Requirements
+
+- Ruby 3.x
+- Rails 7.x
+- SQLite (or PostgreSQL if configured)
+
+### Installation
+
+```bash
+git clone https://github.com/YOUR_USERNAME/device-assignment-app.git
+cd device-assignment-app
+bundle install
+bin/rails db:setup
+```
+
+###  Project Structure
+
+app/models/user.rb – basic user model
+app/models/device.rb – device model with assignment logic
+app/models/returns_history.rb - return history of devices
+app/services/assign_device_to_user.rb – device assignment logic
+app/services/return_device_from_user.rb – device return logic
+spec/services/ – tests for both services
+
+###  License
+This project is intended for demonstration purposes only.
