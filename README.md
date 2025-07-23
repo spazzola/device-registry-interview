@@ -35,8 +35,8 @@ This project was implemented as part of a recruitment task.
 ### Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/device-assignment-app.git
-cd device-assignment-app
+git clone https://github.com/spazzola/device-registry-interview.git
+cd device-registry-interview
 bundle install
 bin/rails db:setup
 ```
