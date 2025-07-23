@@ -48,6 +48,7 @@ bin/rails db:setup
 - app/models/returns_history.rb - return history of devices
 - app/services/assign_device_to_user.rb – device assignment logic
 - app/services/return_device_from_user.rb – device return logic
+- app/services/validation_service.rb - base validation logic
 - spec/services/ – tests for both services
 
 ###  License
