@@ -21,8 +21,8 @@ class ReturnDeviceFromUser
   private
 
   def validate_params!
-    raise ArgumentError, 'user is required' if @user.nil?
-    raise ArgumentError, 'serial_number is required' if @serial_number.nil? || @serial_number.strip.empty?
+    ValidationService.validate_user(@user)
+    ValidationService.validate_string(@serial_number, "serial_number")
   end
 
   def check_if_can_return(device)
