@@ -25,9 +25,9 @@ class AssignDeviceToUser
   private
 
   def validate_params!
-    raise ArgumentError, 'requesting_user is required' if @requesting_user.nil?
-    raise ArgumentError, 'serial_number is required' if @serial_number.nil? || @serial_number.strip.empty?
-    raise ArgumentError, 'invalid new_device_owner_id' if @new_device_owner_id.nil? || @new_device_owner_id <= 0
+    ValidationService.validate_user(@requesting_user)
+    ValidationService.validate_string(@serial_number, "serial_number")
+    ValidationService.validate_id(@new_device_owner_id)
   end
 
   def validate_device(device)
