@@ -58,7 +58,7 @@ RSpec.describe ReturnDeviceFromUser do
           user: user,
           serial_number: " "
         ).call 
-      }.to raise_error(ArgumentError, 'serial_number is required')
+      }.to raise_error(ArgumentError, 'invalid value for serial_number')
     end
   end
 end
