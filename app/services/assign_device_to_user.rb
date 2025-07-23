@@ -5,10 +5,13 @@ class AssignDeviceToUser
     @requesting_user = requesting_user
     @serial_number = serial_number
     @new_device_owner_id = new_device_owner_id
+
+    validate_params!
   end
 
   def call 
     raise RegistrationError::Unauthorized unless assigning_to_self?
+
     device = Device.find_or_initialize_by(serial_number: @serial_number)
 
     validate_device(device);
@@ -20,6 +23,12 @@ class AssignDeviceToUser
 
 
   private
+
+  def validate_params!
+    ValidationService.validate_user(@requesting_user)
+    ValidationService.validate_string(@serial_number, "serial_number")
+    ValidationService.validate_id(@new_device_owner_id)
+  end
 
   def validate_device(device)
     if device.persisted?

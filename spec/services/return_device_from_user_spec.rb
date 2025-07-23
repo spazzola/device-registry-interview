@@ -41,4 +41,24 @@ RSpec.describe ReturnDeviceFromUser do
         }.to raise_error(ReturnError::Unauthorized)
      end
   end
+
+  context 'when users returns a device incorrect params' do
+    it 'raises an ArgumentError if user is nil' do
+      expect {         
+        ReturnDeviceFromUser.new(
+          user: nil,
+          serial_number: serial_number
+        ).call 
+      }.to raise_error(ArgumentError, 'user is required')
+    end
+
+    it 'raises an ArgumentError if serial_number is empty string' do
+      expect {         
+        ReturnDeviceFromUser.new(
+          user: user,
+          serial_number: " "
+        ).call 
+      }.to raise_error(ArgumentError, 'invalid value for serial_number')
+    end
+  end
 end
