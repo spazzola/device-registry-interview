@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  validates: @email, presense: true, unique: true
+  
   has_many :api_keys, as: :bearer
   has_many :devices
   has_many :returns_histories
