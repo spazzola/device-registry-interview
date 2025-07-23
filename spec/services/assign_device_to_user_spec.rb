@@ -72,7 +72,7 @@ RSpec.describe AssignDeviceToUser do
           serial_number: "123456",
           new_device_owner_id: 1
         ).call 
-      }.to raise_error(ArgumentError, 'requesting_user is required')
+      }.to raise_error(ArgumentError, 'user is required')
     end
 
     it 'raises an ArgumentError if serial_number is empty string' do
@@ -82,7 +82,7 @@ RSpec.describe AssignDeviceToUser do
           serial_number: " ",
           new_device_owner_id: 1
         ).call 
-      }.to raise_error(ArgumentError, 'serial_number is required')
+      }.to raise_error(ArgumentError, 'invalid value for serial_number')
     end
 
     it 'raises an ArgumentError if new_device_owner_id is less than 0' do
@@ -92,7 +92,7 @@ RSpec.describe AssignDeviceToUser do
           serial_number: "ds",
           new_device_owner_id: -1
         ).call 
-      }.to raise_error(ArgumentError, 'invalid new_device_owner_id')
+      }.to raise_error(ArgumentError, 'invalid id')
     end
   end
 end
