@@ -14,8 +14,8 @@ class AssignDeviceToUser
 
     device = Device.find_or_initialize_by(serial_number: @serial_number)
 
-    validate_device(device);
-    create_device_object(device);
+    validate_device(device)
+    create_device_object(device)
     create_return_history(device)
 
     device
