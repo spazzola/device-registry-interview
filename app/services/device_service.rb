@@ -38,11 +38,11 @@ class DeviceService
   private
 
   def validate_assign!
-    raise RegistrationError::Unauthorized unless assigning_to_self?
-
     ValidationService.validate_user(@requesting_user)
     ValidationService.validate_string(@serial_number, "serial_number")
     ValidationService.validate_id(@new_device_owner_id)
+    
+    raise RegistrationError::Unauthorized unless assigning_to_self?
   end
 
   def validate_return!
@@ -51,6 +51,7 @@ class DeviceService
   end
 
   def assigning_to_self?
+    puts "requesting_user.id= #{@requesting_user.id}, new_device_owner_id=#{@new_device_owner_id}"
     @requesting_user.id == @new_device_owner_id
   end
 
