@@ -3,6 +3,8 @@
 A small Ruby on Rails application for managing device assignments within an organization.  
 This project was implemented as part of a recruitment task.
 
+NOTE: there was a bit of confusion about the time limit (the task was sent to me Monday morning, but I got it in the evening). I finished the main part by Wednesday evening, and that’s on the main branch. I also did an extra refactor (merging everything into one device service, following Single Responsibility principle), and that’s on the refactor/single-device-service-implementation branch. 
+
 ## ✅ Features
 
 - Users can assign a device to themselves.
